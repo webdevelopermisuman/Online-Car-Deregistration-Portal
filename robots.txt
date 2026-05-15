@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://spruchreif-auto.lovable.app/sitemap.xml
