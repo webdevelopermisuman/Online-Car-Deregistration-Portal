@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FAQ – Häufige Fragen zur Online KFZ-Abmeldung</title>
+<meta name="description" content="Antworten auf die häufigsten Fragen zur Online-Fahrzeugabmeldung in Deutschland." />
+<link rel="canonical" href="./faq.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<div class="app">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">FAQ</div>
+      <h1>Häufig gestellte Fragen</h1>
+      <p>Antworten zu Service, Ablauf, Preis und Datenschutz.</p>
+    </div>
+    <div style="max-width:48rem;margin:0 auto;padding:0 1.25rem 5rem">
+      <div class="faq-list" id="faqAll"></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+</div>
+<script src="assets/partials.js"></script>
+<script src="assets/faq-data.js"></script>
+<script>
+(function(){
+  function init(){
+    var data = (window.FAQS||[]);
+    var host = document.getElementById("faqAll");
+    if(!host || !data.length) return;
+    host.innerHTML = data.map(function(f,i){
+      return '<div class="faq-item'+(i===0?' open':'')+'">'+
+        '<button type="button" class="faq-btn"><span class="q">'+f.q+'</span>'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>'+
+        '</button>'+
+        '<div class="faq-answer">'+f.a+'</div>'+
+        '</div>';
+    }).join("");
+    host.addEventListener("click", function(e){
+      var btn = e.target.closest(".faq-btn");
+      if(!btn || !host.contains(btn)) return;
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains("open");
+      host.querySelectorAll(".faq-item.open").forEach(function(el){ el.classList.remove("open"); });
+      if(!wasOpen) item.classList.add("open");
+    });
+  }
+  if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
+</script>
+</body>
+</html>
