@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>So funktioniert's – Ablauf der Online KFZ-Abmeldung</title>
+<meta name="description" content="In 7 einfachen Schritten zur Online-Fahrzeugabmeldung. So funktioniert unser bundesweiter Service." />
+<link rel="canonical" href="./ablauf.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<div class="app">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Ablauf</div>
+      <h1>So einfach melden Sie Ihr Fahrzeug ab</h1>
+      <p>Der gesamte Prozess dauert nur wenige Minuten – ohne Termin, ohne Dokumenten-Upload, bundesweit gültig.</p>
+    </div>
+    <div class="steps">
+      <ol id="stepsList"></ol>
+      <div class="cta-card">
+        <div>
+          <div style="font-size:14px;color:var(--muted-foreground)">Pauschalpreis</div>
+          <div class="price">29,95&nbsp;€</div>
+        </div>
+        <a href="abmeldung.html" class="btn btn-primary">Jetzt starten ›</a>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+</div>
+<script src="assets/partials.js"></script>
+<script>
+const STEPS = [
+  ["Kennzeichen eingeben","Erfassen Sie Ihr amtliches Kennzeichen."],
+  ["FIN eingeben","Die 17-stellige Fahrzeugidentifikationsnummer aus der Zulassungsbescheinigung Teil I."],
+  ["Sicherheitscode der Zulassungsbescheinigung","Verdeckter Code aus der ZB I – freirubbeln."],
+  ["Sicherheitscode 1. Kennzeichen","Freigerubbelter Code von der vorderen Stempelplakette."],
+  ["Sicherheitscode 2. Kennzeichen","Freigerubbelter Code von der hinteren Stempelplakette."],
+  ["Kontaktdaten","Name, E-Mail, Telefon – damit wir Sie erreichen."],
+  ["Übersicht & Absenden","Daten prüfen und Antrag verbindlich übermitteln."],
+];
+document.getElementById("stepsList").innerHTML = STEPS.map((s,i)=>`
+  <li class="step">
+    <div class="num">
+      <div class="circle">${i+1}</div>
+      ${i<STEPS.length-1?'<div class="line"></div>':''}
+    </div>
+    <div class="body">
+      <div class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 12 11 14 15 10"/><circle cx="12" cy="12" r="10"/></svg>
+        <h3>${s[0]}</h3>
+      </div>
+      <p>${s[1]}</p>
+    </div>
+  </li>`).join("");
+</script>
+</body>
+</html>
